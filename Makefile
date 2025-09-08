@@ -81,3 +81,39 @@ help:
 	@echo "  check-go     - Check if Go is installed"
 	@echo "  check-python - Check if Python3 is installed"
 	@echo "  help         - Show this help message"
+
+# Docker targets
+.PHONY: docker-build
+docker-build:
+	@echo "🐳 Building Docker image..."
+	docker-compose build
+	@echo "✅ Docker image built successfully"
+
+.PHONY: docker-run
+docker-run:
+	@echo "🚀 Starting Docker container..."
+	docker-compose up -d
+	@echo "✅ Container started. API available at http://localhost:8000"
+
+.PHONY: docker-stop
+docker-stop:
+	@echo "🛑 Stopping Docker container..."
+	docker-compose down
+	@echo "✅ Container stopped"
+
+.PHONY: docker-logs
+docker-logs:
+	@echo "📋 Showing Docker logs..."
+	docker-compose logs -f
+
+.PHONY: docker-clean
+docker-clean:
+	@echo "🧹 Cleaning Docker resources..."
+	docker-compose down -v --rmi all
+	docker system prune -f
+	@echo "✅ Docker cleanup completed"
+
+.PHONY: docker-dev
+docker-dev:
+	@echo "🔄 Starting Docker in development mode..."
+	docker-compose up --build

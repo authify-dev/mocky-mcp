@@ -29,7 +29,7 @@ async def startup_event():
 
     # Arrancamos el servidor MCP (Go)
     mcp_server = MCPServerStdio(
-        params={"command": "../server-mcp"},
+        params={"command": "./server-mcp"},
     )
     await mcp_server.connect()
 

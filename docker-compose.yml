@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  mocky-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mocky-mcp-app
+    ports:
+      - "8011:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    networks:
+      - mocky-network
+
+networks:
+  mocky-network:
+    driver: bridge
+
+
