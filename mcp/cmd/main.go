@@ -86,7 +86,7 @@ type mockyRequest struct {
 }
 
 func listPrototypesHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	const url = "https://development.jalocompany.tech/mocky/v1/prototypes"
+	const url = "http://209.126.13.207:8010/v1/prototypes"
 
 	resp, err := http.Get(url)
 	if err != nil {
